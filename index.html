@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="assets/css/reset.css">
+  <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -19,20 +19,23 @@
 
     <div id="time" class="rst st-question">Time Remaining= <span id="secs"></span> seconds</div>
 
-    <div class="st-question" class="rst"></div>
+    <h2 id="question" class="st-question rst"></h2>
     
     <button id="answer1" type="button" class="btn btn-primary btn-lg btn-block st-question rst"></button>
     <button id="answer2" type="button" class="btn btn-primary btn-lg btn-block st-question rst"></button>
     <button id="answer3" type="button" class="btn btn-primary btn-lg btn-block st-question rst"></button>
     <button id="answer4" type="button" class="btn btn-primary btn-lg btn-block st-question rst"></button>
 
-    <div id="result" class="rst"></div>
+    <h2 id="result" class="rst"></h2>
 
     <div id="image" class="rst"></div>
 
     <button id="start-button" type="button" class="btn btn-primary btn-lg">Start</button>
 
+    <button id="reset-button" type="button" class="btn btn-primary btn-lg rst">Reset</button>
+    
 
     <script src="assets/javascript/app.js"></script>
+  </div>
 </body>
 </html>
