@@ -5,11 +5,13 @@ $(document).ready(function() {
   var result = false;
   var score = false;
 
-  $('#start-button').click(function() {
-    $('#start-button').css('display', 'none');
-    $('.st-question').css('display', 'block');
-    questionPop();
-  })
+  $('#start-button').click(askQuestion);
+
+  function askQuestion() {
+      $('#start-button').css('display', 'none');
+      $('.st-question').css('display', 'block');
+      questionPop();
+  }
 
   var questions = {
     question1: {
@@ -45,11 +47,13 @@ $(document).ready(function() {
       $('#result').text('Correct! The answer is ' + questions.question1.ca + '!');
       $('.st-question').css('display', 'none');
       $('#result').css('display', 'block');
+      setTimeout(askQuestion, 3000);
       }
     else {
       $('#result').text('Wrong! The answer is ' + questions.question1.ca + '!');
       $('.st-question').css('display', 'none');
       $('#result').css('display', 'block');
+      setTimeout(askQuestion, 3000);
     }
     })
 
