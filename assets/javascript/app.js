@@ -16,29 +16,50 @@ $(document).ready(function() {
   function askQuestion() {
     $('#start-button').css('display', 'none');
     $('.st-question').css('display', 'block');
+    $('#result').css('display', 'none');
     questionPop();
   }
 
   var questions = {
     question1: {
-      q: 'Question about red?',
-      a1: 'blue',
-      a2: 'blue',
-      a3: 'red',
-      a4: 'blue',
-      ca: 'red',
-      yes: "yup, it's red!",
-      no: "No! It's red! You suck!"
+      q: 'What color light results from mixing blue and yellow light?',
+      a1: 'Blue',
+      a2: 'Yellow',
+      a3: 'Red',
+      a4: 'Green',
+      ca: 'Green',
     },
     question2: {
-      q: 'Question about red?',
-      a1: 'blue',
-      a2: 'blue',
-      a3: 'red',
-      a4: 'blue',
-      ca: 'red',
-      yes: "yup, it's red!",
-      no: "No! It's red! You suck!"
+      q: 'What color light results from mixing blue and red light?',
+      a1: 'Red',
+      a2: 'Orange',
+      a3: 'Purple',
+      a4: 'Green',
+      ca: 'Purple',
+    },
+    question3: {
+      q: 'What color light results from mixing red and yellow light?',
+      a1: 'Green',
+      a2: 'Orange',
+      a3: 'Pink',
+      a4: 'Blue',
+      ca: 'Orange',
+    },
+    question4: {
+      q: 'What are the three primary colors of light?',
+      a1: 'Green, Orange, and Purple',
+      a2: 'Magenta, Yellow, and Cyan',
+      a3: 'Red, Yellow, and Blue',
+      a4: 'Red, Yellow, and Green',
+      ca: 'Red, Yellow, and Blue',
+    },
+    question5: {
+      q: 'What color light results from mixing all three primary colors?',
+      a1: 'White',
+      a2: 'Red',
+      a3: 'Black',
+      a4: 'Darkness',
+      ca: 'White',
     }
 
   }
@@ -80,7 +101,7 @@ $(document).ready(function() {
         clearInterval(timerInterval);
       }
       else {
-        $('#result').text('You took too long! The answer is ' + questions.question1.ca + '!');
+        $('#result').text('You took too long! The answer is: ' + questions.question1.ca + '!');
         $('.st-question').css('display', 'none');
         $('#result').css('display', 'block');
         clearInterval(timerInterval);
@@ -98,8 +119,8 @@ $(document).ready(function() {
     
   function buttons() {
     var btnText = $(this).text();
-    if (btnText == questions.question1.ca) {
-      $('#result').text('Correct! The answer is ' + questions.question1.ca + '!');
+    if (btnText == questions[y].ca) {
+      $('#result').text('Correct! The answer is: ' + questions[y].ca + '!');
       $('.st-question').css('display', 'none');
       $('#result').css('display', 'block');
       score++;
@@ -109,7 +130,7 @@ $(document).ready(function() {
       setTimeout(askQuestion, 3000);
       }
     else {
-      $('#result').text('Wrong! The answer is ' + questions.question1.ca + '!');
+      $('#result').text('Wrong! The answer is: ' + questions[y].ca + '!');
       $('.st-question').css('display', 'none');
       $('#result').css('display', 'block');
       soFar++;
