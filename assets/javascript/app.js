@@ -4,13 +4,15 @@ $(document).ready(function() {
   var game = false;
   var result = false;
   var score = false;
-
+  var time = 30;
+  var timesUp = false;
+  
   $('#start-button').click(askQuestion);
 
   function askQuestion() {
-      $('#start-button').css('display', 'none');
-      $('.st-question').css('display', 'block');
-      questionPop();
+    $('#start-button').css('display', 'none');
+    $('.st-question').css('display', 'block');
+    questionPop();
   }
 
   var questions = {
@@ -37,6 +39,23 @@ $(document).ready(function() {
     $('#answer2').text(questions.question1.a2);
     $('#answer3').text(questions.question1.a3);
     $('#answer4').text(questions.question1.a4);
+    var timerInterval = setInterval(count, 1000);
+    function count() {
+      if (time >= 1) {
+        time--;
+        $('#secs').text(time);
+        }
+      else {
+        $('#result').text('You took too long! The answer is ' + questions.question1.ca + '!');
+        $('.st-question').css('display', 'none');
+        $('#result').css('display', 'block');
+        clearInterval(timerInterval);
+        time = 30;
+        $('#secs').text(time);
+        setTimeout(askQuestion, 3000);
+      }
+    }
+  
   }
 
   $('.btn-block').click(function() {
@@ -47,12 +66,16 @@ $(document).ready(function() {
       $('#result').text('Correct! The answer is ' + questions.question1.ca + '!');
       $('.st-question').css('display', 'none');
       $('#result').css('display', 'block');
+      // clearInterval(timerInterval);
+      // time = 30;
       setTimeout(askQuestion, 3000);
       }
     else {
       $('#result').text('Wrong! The answer is ' + questions.question1.ca + '!');
       $('.st-question').css('display', 'none');
       $('#result').css('display', 'block');
+      // clearInterval(timerInterval);
+      // time = 30;
       setTimeout(askQuestion, 3000);
     }
     })
