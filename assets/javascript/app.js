@@ -14,10 +14,21 @@ $(document).ready(function() {
   $('#start-button').click(askQuestion);
 
   function askQuestion() {
+    if (answeredArr.length != Object.keys(questions).length) {
     $('#start-button').css('display', 'none');
     $('.st-question').css('display', 'block');
     $('#result').css('display', 'none');
     questionPop();
+    }
+    else {
+      results();
+    }
+  }
+
+  function results() {
+    $('.st-question').css('display', 'none');
+    $('.rst').css('display', 'none');
+    $('#reset-button').css('display', 'block');
   }
 
   var questions = {
@@ -66,6 +77,7 @@ $(document).ready(function() {
 
   function reset() {
     $('.rst').css('display', 'none');
+    $('#reset-button').css('display', 'none');
   }
 
   function ranGen() {
