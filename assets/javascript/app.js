@@ -3,9 +3,10 @@ $(document).ready(function() {
   var starting = true;
   var game = false;
   var result = false;
-  var score = false;
+  var score = 0;
   var time = 30;
-  var timesUp = false;
+  var timing = false;
+  var answered;
   
   $('#start-button').click(askQuestion);
 
@@ -39,12 +40,18 @@ $(document).ready(function() {
     $('#answer2').text(questions.question1.a2);
     $('#answer3').text(questions.question1.a3);
     $('#answer4').text(questions.question1.a4);
+    answered = false;
+    time = 30;
+    $('#secs').text(time);
     var timerInterval = setInterval(count, 1000);
     function count() {
-      if (time >= 1) {
+      if (time >= 1 && answered != true) {
         time--;
         $('#secs').text(time);
         }
+      else if (answered == true) {
+        clearInterval(timerInterval);
+      }
       else {
         $('#result').text('You took too long! The answer is ' + questions.question1.ca + '!');
         $('.st-question').css('display', 'none');
@@ -55,30 +62,29 @@ $(document).ready(function() {
         setTimeout(askQuestion, 3000);
       }
     }
-  
   }
 
-  $('.btn-block').click(function() {
+  $('.btn-block').click(buttons);
+    
+  function buttons() {
     var btnText = $(this).text();
-    console.log(btnText);
-    console.log(questions.question1.ca);
     if (btnText == questions.question1.ca) {
       $('#result').text('Correct! The answer is ' + questions.question1.ca + '!');
       $('.st-question').css('display', 'none');
       $('#result').css('display', 'block');
-      // clearInterval(timerInterval);
-      // time = 30;
+      score++;
+      console.log(score);
       setTimeout(askQuestion, 3000);
       }
     else {
       $('#result').text('Wrong! The answer is ' + questions.question1.ca + '!');
       $('.st-question').css('display', 'none');
       $('#result').css('display', 'block');
-      // clearInterval(timerInterval);
-      // time = 30;
       setTimeout(askQuestion, 3000);
     }
-    })
+    answered = true;
+    }
+
 
   reset();
 });  
