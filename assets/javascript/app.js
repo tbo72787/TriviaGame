@@ -25,11 +25,7 @@ $(document).ready(function() {
     }
   }
 
-  function results() {
-    $('.st-question').css('display', 'none');
-    $('.rst').css('display', 'none');
-    $('#reset-button').css('display', 'block');
-  }
+  
 
   var questions = {
     question1: {
@@ -75,9 +71,22 @@ $(document).ready(function() {
 
   }
 
-  function reset() {
+  function results() {
+    $('.st-question').css('display', 'none');
     $('.rst').css('display', 'none');
-    $('#reset-button').css('display', 'none');
+    $('#you-got').text('You got ' + score + '/' + Object.keys(questions).length + '!');
+    $('.reset').css('display', 'block');
+  }
+
+  $('#reset-button').click(reset);
+
+  function reset() {
+    answeredArr.length = 0;
+    score = 0;
+    soFar = 0;
+    $('.rst').css('display', 'none');
+    $('.reset').css('display', 'none');
+    $('#start-button').css('display', 'inline-block');
   }
 
   function ranGen() {
