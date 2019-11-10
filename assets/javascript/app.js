@@ -24,7 +24,7 @@ $(document).ready(function() {
   // creates questions object containing questions and answers
   var questions = {
     question1: {
-      q: 'What color light results from mixing blue and yellow light?',
+      q: 'What color results from mixing blue and yellow?',
       a1: 'Blue',
       a2: 'Yellow',
       a3: 'Red',
@@ -32,7 +32,7 @@ $(document).ready(function() {
       ca: 'Green',
     },
     question2: {
-      q: 'What color light results from mixing blue and red light?',
+      q: 'What color results from mixing blue and red?',
       a1: 'Red',
       a2: 'Orange',
       a3: 'Purple',
@@ -40,7 +40,7 @@ $(document).ready(function() {
       ca: 'Purple',
     },
     question3: {
-      q: 'What color light results from mixing red and yellow light?',
+      q: 'What color results from mixing red and yellow?',
       a1: 'Green',
       a2: 'Orange',
       a3: 'Pink',
@@ -48,7 +48,7 @@ $(document).ready(function() {
       ca: 'Orange',
     },
     question4: {
-      q: 'What are the three primary colors of light?',
+      q: 'What are the three primary colors?',
       a1: 'Green, Orange, and Purple',
       a2: 'Magenta, Yellow, and Cyan',
       a3: 'Red, Yellow, and Blue',
@@ -56,7 +56,7 @@ $(document).ready(function() {
       ca: 'Red, Yellow, and Blue',
     },
     question5: {
-      q: 'What color light results from mixing all three primary colors?',
+      q: 'What shade results from the sum of all possible colors?',
       a1: 'White',
       a2: 'Red',
       a3: 'Black',
