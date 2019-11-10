@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  // declare global variables 
+  // declares global variables 
   var score = 0;
   var time = 30;
   var answered;
@@ -10,22 +10,18 @@ $(document).ready(function() {
   var imgArr = ['assets\\images\\green.jpg', 'assets\\images\\purple.jpg', 'assets\\images\\orange.jpg', 
   'assets\\images\\colors.jpg', 'assets\\images\\white.jpg']
 
-  $('#start-button').click(askQuestion);
-
-  function askQuestion() {
-    if (answeredArr.length != Object.keys(questions).length) {
-    $('#start-button').css('display', 'none');
-    $('.rst').css('display', 'block');
-    $('.result').css('display', 'none');
-    questionPop();
-    }
-    else {
-      results();
-    }
+  // resets all stored variables to 0, displays only start button
+  function reset() {
+    answeredArr.length = 0;
+    score = 0;
+    soFar = 0;
+    $('.rst').css('display', 'none');
+    $('.reset').css('display', 'none');
+    $('.answer').css('display', 'none');
+    $('#start-button').css('display', 'inline-block');
   }
 
-  
-
+  // creates questions object containing questions and answers
   var questions = {
     question1: {
       q: 'What color light results from mixing blue and yellow light?',
@@ -70,24 +66,31 @@ $(document).ready(function() {
 
   }
 
+  $('#start-button').click(askQuestion);
+
+  function askQuestion() {
+    if (answeredArr.length != Object.keys(questions).length) {
+    $('#start-button').css('display', 'none');
+    $('.rst').css('display', 'block');
+    $('.answer').css('display', 'none');
+    questionPop();
+    }
+    else {
+      results();
+    }
+  }
+
+
   function results() {
     $('.rst').css('display', 'none');
-    $('.result').css('display', 'none');
+    $('.answer').css('display', 'none');
     $('#you-got').text('You got ' + score + '/' + Object.keys(questions).length + '!');
     $('.reset').css('display', 'block');
   }
 
   $('#reset-button').click(reset);
 
-  function reset() {
-    answeredArr.length = 0;
-    score = 0;
-    soFar = 0;
-    $('.rst').css('display', 'none');
-    $('.reset').css('display', 'none');
-    $('.result').css('display', 'none');
-    $('#start-button').css('display', 'inline-block');
-  }
+  
 
   function ranGen() {
     var x = Math.floor(Math.random()*(Object.keys(questions).length));
@@ -100,6 +103,9 @@ $(document).ready(function() {
       y = 'question' + (x + 1);
     }
   }
+
+
+  
 
   function questionPop() {
     ranGen();
@@ -124,7 +130,7 @@ $(document).ready(function() {
         imgDis();
         $('#result').text('You took too long! The answer is: ' + questions[y].ca + '!');
         $('.rst').css('display', 'none');
-        $('.result').css('display', 'block');
+        $('.answer').css('display', 'block');
         clearInterval(timerInterval);
         time = 30;
         $('#secs').text(time);
@@ -144,7 +150,7 @@ $(document).ready(function() {
       imgDis();
       $('#result').text('Correct! The answer is: ' + questions[y].ca + '!');
       $('.rst').css('display', 'none');
-      $('.result').css('display', 'block');
+      $('.answer').css('display', 'block');
       score++;
       soFar++;
       console.log('answered ' + soFar);
@@ -155,7 +161,7 @@ $(document).ready(function() {
       imgDis();
       $('#result').text('Wrong! The answer is: ' + questions[y].ca + '!');
       $('.rst').css('display', 'none');
-      $('.result').css('display', 'block');
+      $('.answer').css('display', 'block');
       soFar++;
       console.log('answered ' + soFar);
       console.log('score ' + score);
@@ -168,6 +174,8 @@ $(document).ready(function() {
     $('#image').empty();
     var pic = $('<img>');
     pic.attr('src', imgArr[sourceNum]);
+    pic.css('max-height', '100%');
+    pic.css('max-width', '100%');
     console.log(pic.attr('src'));
     $('#image').append(pic);
   }

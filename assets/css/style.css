@@ -1,3 +1,17 @@
+body {
+  background-image: url('..\\images\\background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+
 #reset-button {
   margin: 0 auto;
+}
+
+#image {
+  margin: 0 auto;
+  max-height: 300px;
+  max-width: 300px;
 }

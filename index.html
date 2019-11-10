@@ -9,14 +9,18 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <title>Trivia Game</title>
+  <title>Primary Trivia</title>
 </head>
 <body>
   <div class="container text-center">
     <!-- This stays permanently visible -->
-    <div>Trivia Game</div>
+    <h1>Primary Trivia</h1>
 
+    <!-- Start button. Shown by reset() -->
+    <button id="start-button" type="button" class="btn btn-primary btn-lg">Start</button>
+    <!-- ------------ -->
 
+    <!-- Question display. Shown by askQuestion() -->
     <div id="time" class="rst">Time Remaining= <span id="secs">30</span> seconds</div>
 
     <h2 id="question" class= "rst"></h2>
@@ -25,17 +29,19 @@
     <button id="answer2" type="button" class="btn btn-primary btn-lg btn-block rst"></button>
     <button id="answer3" type="button" class="btn btn-primary btn-lg btn-block rst"></button>
     <button id="answer4" type="button" class="btn btn-primary btn-lg btn-block rst"></button>
+    <!-- ------------ -->
 
-    <h2 id="result" class="result"></h2>
+    <!-- Answer display. Shown by buttons() and questionPop() -->
+    <h2 id="result" class="answer"></h2>
 
-    <div id="image" class="result"></div>
+    <div id="image" class="answer"></div>
+    <!-- ------------ -->
 
-    <button id="start-button" type="button" class="btn btn-primary btn-lg">Start</button>
-
+    <!-- Results display. Shown by results -->
     <h2 id="you-got" class="reset"></h2>
 
     <button id="reset-button" type="button" class="btn btn-primary btn-lg reset">Reset</button>
-    
+    <!-- ------------ -->
 
     <script src="assets/javascript/app.js"></script>
   </div>
